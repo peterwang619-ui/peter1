@@ -37,6 +37,13 @@ Token scaling, retrospective analysis, task orchestration, and multi-project wor
 - CLI and Python API
 - JSON-based configuration
 
+### Awesome Hermes
+- Curated collection of Hermes Agent skills
+- Search, list, and recommend skills
+- Categorized skill directory
+- CLI and Python API
+- Skill installation tracking
+
 ## Installation
 
 ```bash
@@ -145,6 +152,25 @@ stack run myproject --args "arg1 arg2"
 stack remove myproject
 ```
 
+### Awesome Hermes CLI
+
+```bash
+# List all skills
+awesome-hermes list
+
+# Search skills
+awesome-hermes search "python"
+
+# Show skill details
+awesome-hermes show repomix
+
+# Recommend skills
+awesome-hermes recommend "I need to manage tasks"
+
+# Mark skill as installed
+awesome-hermes mark-installed stack /tmp/peter1/stack
+```
+
 ### Python API
 
 ```python
@@ -178,6 +204,11 @@ current = wm.get_current_project()
 sm = StackManager()
 project = sm.init_project("myproject", "/path/to/myproject", "github.com/user/myproject")
 result = sm.build_project("myproject")
+
+# Awesome Hermes
+catalog = SkillCatalog()
+skills = catalog.search("python")
+recommendations = catalog.recommend("I need to manage tasks")
 ```
 
 ## Supported Encodings (TokScale)
