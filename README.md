@@ -1,6 +1,6 @@
-# TokScale & Hindsight
+# TokScale & Hindsight & Mission Control
 
-Token scaling, estimation, and retrospective analysis tools for LLM context management.
+Token scaling, retrospective analysis, and mission control tools for LLM context management and task orchestration.
 
 ## Features
 
@@ -15,6 +15,13 @@ Token scaling, estimation, and retrospective analysis tools for LLM context mana
 - Cross-session memory management
 - CLI and Python API
 - Local JSON-based storage
+
+### Mission Control
+- Task creation, tracking, and lifecycle management
+- Task status management (pending, running, completed, failed, cancelled)
+- CLI and Python API
+- JSON-based persistent storage
+- Extensible scheduler for task automation
 
 ## Installation
 
@@ -64,11 +71,34 @@ hindsight memory delete mykey
 hindsight memory list
 ```
 
+### Mission Control CLI
+
+```bash
+# List all tasks
+mission-control list
+
+# Create a new task
+mission-control create "Deploy service" --description "Deploy to production"
+
+# Check task status
+mission-control status <task-id>
+
+# Mark task as completed
+mission-control complete <task-id>
+
+# Cancel a task
+mission-control cancel <task-id>
+
+# Delete a task
+mission-control delete <task-id>
+```
+
 ### Python API
 
 ```python
 from tokscale import count_tokens, estimate_context
 from hindsight import search_sessions, save_memory, load_memory
+from mission_control import TaskManager, TaskStatus
 
 # TokScale
 count = count_tokens("Hello, world!")
@@ -78,6 +108,12 @@ print(f"Tokens: {count}")
 sessions = search_sessions("python")
 save_memory("favorite_lang", "python")
 value = load_memory("favorite_lang")
+
+# Mission Control
+manager = TaskManager()
+task = manager.create_task("My Task", "Description here")
+print(f"Created task: {task.id}")
+manager.complete_task(task.id)
 ```
 
 ## Supported Encodings (TokScale)
