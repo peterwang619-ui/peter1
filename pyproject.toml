@@ -18,6 +18,7 @@ mission-control = "mission_control.cli:main"
 hermes-workspace = "hermes_workspace.cli:main"
 stack = "stack.cli:main"
 awesome-hermes = "awesome_hermes.cli:main"
+gbrain = "gbrain.cli:main"
 
 [build-system]
 requires = ["hatchling"]

@@ -44,6 +44,13 @@ Token scaling, retrospective analysis, task orchestration, and multi-project wor
 - CLI and Python API
 - Skill installation tracking
 
+### Gbrain
+- Brain/chat bot framework
+- Conversation and message management
+- Interactive chat interface
+- CLI and Python API
+- JSON-based conversation storage
+
 ## Installation
 
 ```bash
@@ -171,6 +178,34 @@ awesome-hermes recommend "I need to manage tasks"
 awesome-hermes mark-installed stack /tmp/peter1/stack
 ```
 
+### Gbrain CLI
+
+```bash
+# List all conversations
+gbrain list
+
+# Create a new conversation
+gbrain new "My Chat"
+
+# Start interactive chat
+gbrain chat <conversation-id>
+
+# Send a message
+gbrain send <conversation-id> "Hello, Gbrain!"
+
+# Show conversation history
+gbrain history <conversation-id> --limit 20
+
+# Switch to a conversation
+gbrain switch <conversation-id>
+
+# Show current conversation
+gbrain current
+
+# Delete a conversation
+gbrain delete <conversation-id>
+```
+
 ### Python API
 
 ```python
@@ -209,6 +244,12 @@ result = sm.build_project("myproject")
 catalog = SkillCatalog()
 skills = catalog.search("python")
 recommendations = catalog.recommend("I need to manage tasks")
+
+# Gbrain
+bm = BrainManager()
+conv = bm.create_conversation("My Chat")
+bm.send_message(conv.id, "Hello, Gbrain!")
+history = conv.get_history()
 ```
 
 ## Supported Encodings (TokScale)
