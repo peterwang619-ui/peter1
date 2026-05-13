@@ -1,6 +1,6 @@
-# TokScale & Hindsight & Mission Control
+# TokScale & Hindsight & Mission Control & Hermes Workspace
 
-Token scaling, retrospective analysis, and mission control tools for LLM context management and task orchestration.
+Token scaling, retrospective analysis, task orchestration, and multi-project workspace management tools.
 
 ## Features
 
@@ -23,10 +23,17 @@ Token scaling, retrospective analysis, and mission control tools for LLM context
 - JSON-based persistent storage
 - Extensible scheduler for task automation
 
+### Hermes Workspace
+- Multi-project workspace management
+- Add, remove, list, and switch between projects
+- JSON-based configuration
+- CLI and Python API
+- Persistent workspace state
+
 ## Installation
 
 ```bash
-pip install tokscale
+pip install toolscale
 ```
 
 Or install from source:
@@ -93,12 +100,32 @@ mission-control cancel <task-id>
 mission-control delete <task-id>
 ```
 
+### Hermes Workspace CLI
+
+```bash
+# List all projects
+hermes-workspace list
+
+# Add a new project
+hermes-workspace add myproject /path/to/myproject --description "My awesome project"
+
+# Switch to a project
+hermes-workspace switch myproject
+
+# Show current project
+hermes-workspace current
+
+# Remove a project
+hermes-workspace remove myproject
+```
+
 ### Python API
 
 ```python
 from tokscale import count_tokens, estimate_context
 from hindsight import search_sessions, save_memory, load_memory
 from mission_control import TaskManager, TaskStatus
+from hermes_workspace import WorkspaceManager
 
 # TokScale
 count = count_tokens("Hello, world!")
@@ -114,6 +141,12 @@ manager = TaskManager()
 task = manager.create_task("My Task", "Description here")
 print(f"Created task: {task.id}")
 manager.complete_task(task.id)
+
+# Hermes Workspace
+wm = WorkspaceManager()
+wm.add_project("myproject", "/path/to/myproject")
+wm.switch_project("myproject")
+current = wm.get_current_project()
 ```
 
 ## Supported Encodings (TokScale)

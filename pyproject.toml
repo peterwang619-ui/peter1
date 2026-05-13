@@ -15,6 +15,7 @@ dependencies = [
 tokscale = "tokscale.cli:main"
 hindsight = "hindsight.cli:main"
 mission-control = "mission_control.cli:main"
+hermes-workspace = "hermes_workspace.cli:main"
 
 [build-system]
 requires = ["hatchling"]
