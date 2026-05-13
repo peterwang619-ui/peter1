@@ -13,6 +13,7 @@ dependencies = [
 
 [project.scripts]
 tokscale = "tokscale.cli:main"
+hindsight = "hindsight.cli:main"
 
 [build-system]
 requires = ["hatchling"]

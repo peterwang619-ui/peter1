@@ -1,13 +1,20 @@
-# TokScale
+# TokScale & Hindsight
 
-Token scaling and estimation tool for LLM context management.
+Token scaling, estimation, and retrospective analysis tools for LLM context management.
 
 ## Features
 
+### TokScale
 - Count tokens in text or files using tiktoken encodings
-- Estimate context window usage for files
+- Estimate context window usage
 - CLI and Python API
 - Supports multiple token encodings (cl100k_base, p50k_base, etc.)
+
+### Hindsight
+- Session search and retrospective analysis
+- Cross-session memory management
+- CLI and Python API
+- Local JSON-based storage
 
 ## Installation
 
@@ -25,7 +32,7 @@ pip install -e .
 
 ## Usage
 
-### CLI
+### TokScale CLI
 
 ```bash
 # Count tokens in a text string
@@ -41,21 +48,39 @@ tokscale count file.txt --encoding p50k_base
 tokscale estimate large_file.py
 ```
 
+### Hindsight CLI
+
+```bash
+# List recent sessions
+hindsight list
+
+# Search sessions
+hindsight search "python"
+
+# Memory management
+hindsight memory get mykey
+hindsight memory set mykey myvalue
+hindsight memory delete mykey
+hindsight memory list
+```
+
 ### Python API
 
 ```python
 from tokscale import count_tokens, estimate_context
+from hindsight import search_sessions, save_memory, load_memory
 
-# Count tokens
+# TokScale
 count = count_tokens("Hello, world!")
 print(f"Tokens: {count}")
 
-# Estimate context usage
-result = estimate_context("file.py")
-print(result)
+# Hindsight
+sessions = search_sessions("python")
+save_memory("favorite_lang", "python")
+value = load_memory("favorite_lang")
 ```
 
-## Supported Encodings
+## Supported Encodings (TokScale)
 
 - `cl100k_base` — GPT-4, GPT-3.5-turbo
 - `p50k_base` — GPT-3 models
