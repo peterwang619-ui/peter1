@@ -30,6 +30,13 @@ Token scaling, retrospective analysis, task orchestration, and multi-project wor
 - CLI and Python API
 - Persistent workspace state
 
+### Stack
+- Go project stack management
+- Initialize, build, run, and deploy Go projects
+- Manage multiple Go project stacks
+- CLI and Python API
+- JSON-based configuration
+
 ## Installation
 
 ```bash
@@ -119,6 +126,25 @@ hermes-workspace current
 hermes-workspace remove myproject
 ```
 
+### Stack CLI
+
+```bash
+# List all Go projects
+stack list
+
+# Initialize a new Go project
+stack init myproject /path/to/myproject --module github.com/user/myproject
+
+# Build a project
+stack build myproject
+
+# Run a project
+stack run myproject --args "arg1 arg2"
+
+# Remove a project
+stack remove myproject
+```
+
 ### Python API
 
 ```python
@@ -147,6 +173,11 @@ wm = WorkspaceManager()
 wm.add_project("myproject", "/path/to/myproject")
 wm.switch_project("myproject")
 current = wm.get_current_project()
+
+# Stack
+sm = StackManager()
+project = sm.init_project("myproject", "/path/to/myproject", "github.com/user/myproject")
+result = sm.build_project("myproject")
 ```
 
 ## Supported Encodings (TokScale)
